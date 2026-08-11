@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2048</string>
+    <string name="score_label">得分</string>
+    <string name="best_label">最佳</string>
+    <string name="new_game">新游戏</string>
+    <string name="game_over">游戏结束</string>
+    <string name="game_over_hint">没有可以移动的格子了，再试一次吧</string>
+    <string name="you_won">你赢啦！</string>
+    <string name="you_won_hint">合成 2048，继续挑战更高分</string>
+    <string name="play_again">再来一局</string>
+    <string name="keep_going">继续</string>
+    <string name="hint_swipe">滑动玻璃棋盘，合并相同数字</string>
+</resources>

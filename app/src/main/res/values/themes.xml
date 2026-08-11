@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 液态玻璃 2048 深色主题 -->
+    <style name="Theme._2048" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/accent_purple</item>
+        <item name="colorPrimaryVariant">@color/bg_mid</item>
+        <item name="colorOnPrimary">@color/text_on_glass</item>
+        <item name="colorSecondary">@color/accent_cyan</item>
+        <item name="colorSecondaryVariant">@color/accent_pink</item>
+        <item name="colorOnSecondary">@color/text_on_glass</item>
+        <item name="android:windowBackground">@color/bg_bottom</item>
+        <item name="android:statusBarColor">@color/bg_top</item>
+        <item name="android:navigationBarColor">@color/bg_bottom</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

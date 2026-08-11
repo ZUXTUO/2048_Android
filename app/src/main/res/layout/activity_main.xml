@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <!-- 液态玻璃背景：深色渐变 + 漂浮彩虹光斑（全屏铺满，延伸到系统栏后方） -->
+    <com.olsc.a2048.GradientBackgroundView
+        android:id="@+id/backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="16dp">
+
+        <!-- 顶部：标题 + 得分/最佳卡 + 新游戏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.03"
+                android:text="2048"
+                android:textColor="@color/text_primary"
+                android:textSize="34sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.olsc.a2048.GlassCardView
+                android:id="@+id/scoreCard"
+                android:layout_width="68dp"
+                android:layout_height="58dp"
+                android:layout_marginEnd="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/scoreLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_label"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/scoreValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="0"
+                        android:textColor="@color/text_on_glass"
+                        android:textSize="19sp" />
+                </LinearLayout>
+            </com.olsc.a2048.GlassCardView>
+
+            <com.olsc.a2048.GlassCardView
+                android:id="@+id/bestCard"
+                android:layout_width="68dp"
+                android:layout_height="58dp"
+                android:layout_marginEnd="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bestLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/best_label"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/bestValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="0"
+                        android:textColor="@color/text_on_glass"
+                        android:textSize="19sp" />
+                </LinearLayout>
+            </com.olsc.a2048.GlassCardView>
+
+            <com.olsc.a2048.GlassCardView
+                android:id="@+id/newGameBtn"
+                android:layout_width="60dp"
+                android:layout_height="58dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/new_game"
+                    android:textColor="@color/text_on_glass"
+                    android:textSize="12sp" />
+            </com.olsc.a2048.GlassCardView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/hint_swipe"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+
+        <!-- 棋盘玻璃面板：贴合棋盘，四周留玻璃边；上下弹性空间使棋盘垂直居中 -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.olsc.a2048.GlassCardView
+            android:id="@+id/boardGlass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <com.olsc.a2048.BoardView
+                android:id="@+id/board"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </com.olsc.a2048.GlassCardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- 游戏结束 / 胜利遮罩 -->
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <com.olsc.a2048.GlassCardView
+            android:id="@+id/overlayCard"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/overlayTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/text_on_glass"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/overlayMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.olsc.a2048.GlassCardView
+                        android:id="@+id/overlayPrimaryBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingStart="26dp"
+                        android:paddingTop="13dp"
+                        android:paddingEnd="26dp"
+                        android:paddingBottom="13dp">
+
+                        <TextView
+                            android:id="@+id/overlayPrimaryText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="@color/text_on_glass"
+                            android:textSize="15sp" />
+                    </com.olsc.a2048.GlassCardView>
+
+                    <com.olsc.a2048.GlassCardView
+                        android:id="@+id/overlaySecondaryBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingStart="22dp"
+                        android:paddingTop="13dp"
+                        android:paddingEnd="22dp"
+                        android:paddingBottom="13dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/keep_going"
+                            android:textColor="@color/text_on_glass"
+                            android:textSize="15sp" />
+                    </com.olsc.a2048.GlassCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </com.olsc.a2048.GlassCardView>
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 低版本（API 24/25）图标：渐变背景 + 柔光 + 2x2 彩色棋子（矢量，非自适应） -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startColor="#3A1F6E"
+                android:endColor="#141B3C"
+                android:angle="270" />
+        </aapt:attr>
+    </path>
+
+    <path
+        android:fillColor="#1EFFFFFF"
+        android:pathData="M54,54m-38,0a38,38 0 1 1 76,0a38,38 0 1 1 -76,0" />
+
+    <path
+        android:fillColor="#EEE4DA"
+        android:pathData="M30,26h12a6,6 0 0 1 6,6v12a6,6 0 0 1 -6,6h-12a6,6 0 0 1 -6,-6v-12a6,6 0 0 1 6,-6z" />
+    <path
+        android:fillColor="#F59563"
+        android:pathData="M66,26h12a6,6 0 0 1 6,6v12a6,6 0 0 1 -6,6h-12a6,6 0 0 1 -6,-6v-12a6,6 0 0 1 6,-6z" />
+    <path
+        android:fillColor="#F65E3B"
+        android:pathData="M30,58h12a6,6 0 0 1 6,6v12a6,6 0 0 1 -6,6h-12a6,6 0 0 1 -6,-6v-12a6,6 0 0 1 6,-6z" />
+    <path
+        android:fillColor="#EDC22E"
+        android:pathData="M66,58h12a6,6 0 0 1 6,6v12a6,6 0 0 1 -6,6h-12a6,6 0 0 1 -6,-6v-12a6,6 0 0 1 6,-6z" />
+</vector>
